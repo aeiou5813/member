@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+	<!-- <select id="loginCheck" resultType="String">
+		SELECT user_name AS userName FROM tb1_member
+		WHERE user_id = #{userId} AND user_pw = #{userPw}
+	</select> -->
+	
+	<select id="memberList" resultType="com.example.spring03.dto.member.MemberVO">
+		Select
+			user_name AS userName,
+			user_id AS userId,
+			user_email AS userEmail,
+			user_regdate AS userRegdate
+		FROM tb1_member
+		<!-- WHERE user_id = #{userId} AND user_pw = #{userPw} -->
+	</select>
+	
+	<insert id="insertMember">
+		Insert into tb1_member
+			(user_id, user_pw, user_name, user_email)
+		values
+			(#{userId}, #{userPw}, #{userName}, #{userEmail})
+	</insert>
+</mapper>
+
